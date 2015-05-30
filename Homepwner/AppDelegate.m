@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "BNRItemsTableViewController.h"
 
 @interface AppDelegate ()
 
@@ -16,7 +17,13 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
+    BNRItemsTableViewController *itvc = [[BNRItemsTableViewController alloc] init];
+    self.window.rootViewController = itvc;
+    
+    self.window.backgroundColor = [UIColor whiteColor];
+    [self.window makeKeyAndVisible];
     return YES;
 }
 
