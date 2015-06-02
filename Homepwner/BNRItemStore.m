@@ -31,8 +31,13 @@
     self = [super init];
     if (self) {
         _privateItems = [[NSMutableArray alloc] init];
+        [self.privateItems addObject:@"No More Items!"];
     }
     return self;
+}
+
+- (void) removeItem:(BNRItem *)item {
+    [self.privateItems removeObjectIdenticalTo:item];
 }
 
 - (NSArray *) allItems {
@@ -41,8 +46,18 @@
 
 - (BNRItem *) createItem {
     BNRItem *item = [BNRItem randomItem];
-    [self.privateItems addObject:item];
+    [self.privateItems insertObject:item atIndex:[self.privateItems count] - 1];
+//    [self.privateItems addObject:item];
     return item;
 }
 
+- (void) moveItemFrom:(NSUInteger)fromIndex toIndex:(NSUInteger)toIndex {
+    if (fromIndex == toIndex) {
+        return;
+    }
+    
+    BNRItem *item = self.privateItems[fromIndex];
+    [self.privateItems removeObjectAtIndex:fromIndex];
+    [self.privateItems insertObject:item atIndex:toIndex];
+}
 @end
