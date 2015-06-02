@@ -9,9 +9,9 @@
 #import "BNRItemsTableViewController.h"
 #import "BNRItem.h"
 #import "BNRItemStore.h"
+#import "BNRDetailViewController.h"
 
 @interface BNRItemsTableViewController ()
-@property (nonatomic, strong) IBOutlet UIView *headerView;
 @end
 
 @implementation BNRItemsTableViewController
@@ -23,26 +23,28 @@
 - (instancetype) init {
     self = [super initWithStyle:UITableViewStylePlain];
     if (self) {
-
+        UINavigationItem *navItem = self.navigationItem;
+        [navItem setTitle:@"HomePwner"];
+        
+        UIBarButtonItem *bbi = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
+                                                                             target:self
+                                                                             action:@selector(addNewItem:)];
+        [navItem setRightBarButtonItem:bbi];
+        [navItem setLeftBarButtonItem:self.editButtonItem];
     }
     return self;
 }
 
-- (IBAction)addNewItem:(id)sender {
+-(void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.tableView reloadData];
+}
+
+- (void)addNewItem:(id)sender {
     BNRItem *newItem = [[BNRItemStore sharedStore] createItem];
     NSInteger lastRow = [[[BNRItemStore sharedStore] allItems] indexOfObject:newItem];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:lastRow inSection:0];
     [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationTop];
-}
-
-- (IBAction)toggleEditingMode:(id)sender {
-    if (self.isEditing) {
-        [sender setTitle:@"Edit" forState:UIControlStateNormal];
-        [self setEditing:NO animated:YES];
-    } else {
-        [sender setTitle:@"Done" forState:UIControlStateNormal];
-        [self setEditing:YES animated:YES];
-    }
 }
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -60,20 +62,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"UITableViewCell"];
-    
-    [self.tableView setTableHeaderView:self.headerView];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (UIView *)headerView {
-    if(!_headerView) {
-        [[NSBundle mainBundle] loadNibNamed:@"HeaderView" owner:self options:nil];
-    }
-    return _headerView;
 }
 
 - (void) tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -92,6 +85,13 @@
 
 -(NSString *) tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
     return @"Remove";
+}
+
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    BNRItem *selectedItem = [[[BNRItemStore sharedStore] allItems] objectAtIndex:indexPath.row];
+    BNRDetailViewController *detailedView = [[BNRDetailViewController alloc] init];
+    detailedView.item = selectedItem;
+    [self.navigationController pushViewController:detailedView animated:YES];
 }
 
 #pragma mark - Table view data source

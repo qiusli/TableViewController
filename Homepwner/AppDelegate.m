@@ -20,7 +20,8 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     BNRItemsTableViewController *itvc = [[BNRItemsTableViewController alloc] init];
-    self.window.rootViewController = itvc;
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:itvc];
+    self.window.rootViewController = navigationController;
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
