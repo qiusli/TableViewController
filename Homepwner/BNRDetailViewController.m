@@ -8,6 +8,7 @@
 
 #import "BNRDetailViewController.h"
 #import "BNRItem.h"
+#import "BNRChangeDateViewController.h"
 
 @interface BNRDetailViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *nameField;
@@ -44,6 +45,12 @@
     item.itemName = self.nameField.text;
     item.serialNumber = self.serialNumberField.text;
     item.valueInDollars = [self.valueField.text intValue];
+}
+
+- (IBAction)changeDate:(id)sender {
+    BNRChangeDateViewController *cdvc = [[BNRChangeDateViewController alloc] init];
+    cdvc.item = self.item;
+    [self.navigationController pushViewController:cdvc animated:YES];
 }
 
 -(void) setItem:(BNRItem *)item {

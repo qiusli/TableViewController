@@ -13,7 +13,7 @@
 @property (nonatomic, copy) NSString *itemName, *serialNumber;
 
 @property (nonatomic) int valueInDollars;
-@property (nonatomic, readonly, strong) NSDate *dateCreated;
+@property (nonatomic, strong) NSDate *dateCreated;
 
 + (instancetype) randomItem;
 

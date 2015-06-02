@@ -35,7 +35,7 @@
         self.valueInDollars = value;
         self.itemName = name;
         self.serialNumber = sNumber;
-//        self.dateCreated = [[NSDate alloc] init];
+        self.dateCreated = [[NSDate alloc] init];
     }
     return self;
 }

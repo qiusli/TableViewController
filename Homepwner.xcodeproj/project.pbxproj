@@ -19,6 +19,8 @@
 		AA669BDB1B194844002E82AA /* BNRItemStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AA669BDA1B194844002E82AA /* BNRItemStore.m */; };
 		AA93E6011B1E39D700ADEA18 /* BNRDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA93E5FF1B1E39D700ADEA18 /* BNRDetailViewController.m */; };
 		AA93E6021B1E39D700ADEA18 /* BNRDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA93E6001B1E39D700ADEA18 /* BNRDetailViewController.xib */; };
+		AA93E6061B1E5D8900ADEA18 /* BNRChangeDateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA93E6041B1E5D8900ADEA18 /* BNRChangeDateViewController.m */; };
+		AA93E6071B1E5D8900ADEA18 /* BNRChangeDateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA93E6051B1E5D8900ADEA18 /* BNRChangeDateViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +56,9 @@
 		AA93E5FE1B1E39D700ADEA18 /* BNRDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRDetailViewController.h; sourceTree = "<group>"; };
 		AA93E5FF1B1E39D700ADEA18 /* BNRDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRDetailViewController.m; sourceTree = "<group>"; };
 		AA93E6001B1E39D700ADEA18 /* BNRDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BNRDetailViewController.xib; sourceTree = "<group>"; };
+		AA93E6031B1E5D8900ADEA18 /* BNRChangeDateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRChangeDateViewController.h; sourceTree = "<group>"; };
+		AA93E6041B1E5D8900ADEA18 /* BNRChangeDateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRChangeDateViewController.m; sourceTree = "<group>"; };
+		AA93E6051B1E5D8900ADEA18 /* BNRChangeDateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BNRChangeDateViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +117,9 @@
 				AA93E5FE1B1E39D700ADEA18 /* BNRDetailViewController.h */,
 				AA93E5FF1B1E39D700ADEA18 /* BNRDetailViewController.m */,
 				AA93E6001B1E39D700ADEA18 /* BNRDetailViewController.xib */,
+				AA93E6031B1E5D8900ADEA18 /* BNRChangeDateViewController.h */,
+				AA93E6041B1E5D8900ADEA18 /* BNRChangeDateViewController.m */,
+				AA93E6051B1E5D8900ADEA18 /* BNRChangeDateViewController.xib */,
 			);
 			path = Homepwner;
 			sourceTree = "<group>";
@@ -224,6 +232,7 @@
 			files = (
 				AA669BB71B181F94002E82AA /* Main.storyboard in Resources */,
 				AA669BBC1B181F94002E82AA /* LaunchScreen.xib in Resources */,
+				AA93E6071B1E5D8900ADEA18 /* BNRChangeDateViewController.xib in Resources */,
 				AA669BB91B181F94002E82AA /* Images.xcassets in Resources */,
 				AA93E6021B1E39D700ADEA18 /* BNRDetailViewController.xib in Resources */,
 			);
@@ -248,6 +257,7 @@
 				AA669BD61B1946F7002E82AA /* BNRItem.m in Sources */,
 				AA93E6011B1E39D700ADEA18 /* BNRDetailViewController.m in Sources */,
 				AA669BAE1B181F94002E82AA /* main.m in Sources */,
+				AA93E6061B1E5D8900ADEA18 /* BNRChangeDateViewController.m in Sources */,
 				AA669BD31B194514002E82AA /* BNRItemsTableViewController.m in Sources */,
 				AA669BDB1B194844002E82AA /* BNRItemStore.m in Sources */,
 			);
