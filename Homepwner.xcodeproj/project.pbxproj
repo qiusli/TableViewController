@@ -21,6 +21,7 @@
 		AA93E6021B1E39D700ADEA18 /* BNRDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA93E6001B1E39D700ADEA18 /* BNRDetailViewController.xib */; };
 		AA93E6061B1E5D8900ADEA18 /* BNRChangeDateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA93E6041B1E5D8900ADEA18 /* BNRChangeDateViewController.m */; };
 		AA93E6071B1E5D8900ADEA18 /* BNRChangeDateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA93E6051B1E5D8900ADEA18 /* BNRChangeDateViewController.xib */; };
+		AA93E60A1B1E772A00ADEA18 /* BNRImageStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AA93E6091B1E772A00ADEA18 /* BNRImageStore.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,8 @@
 		AA93E6031B1E5D8900ADEA18 /* BNRChangeDateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRChangeDateViewController.h; sourceTree = "<group>"; };
 		AA93E6041B1E5D8900ADEA18 /* BNRChangeDateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRChangeDateViewController.m; sourceTree = "<group>"; };
 		AA93E6051B1E5D8900ADEA18 /* BNRChangeDateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BNRChangeDateViewController.xib; sourceTree = "<group>"; };
+		AA93E6081B1E772A00ADEA18 /* BNRImageStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRImageStore.h; sourceTree = "<group>"; };
+		AA93E6091B1E772A00ADEA18 /* BNRImageStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRImageStore.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +105,8 @@
 			children = (
 				AA669BD41B1946F7002E82AA /* BNRItem.h */,
 				AA669BD51B1946F7002E82AA /* BNRItem.m */,
+				AA93E6081B1E772A00ADEA18 /* BNRImageStore.h */,
+				AA93E6091B1E772A00ADEA18 /* BNRImageStore.m */,
 				AA669BAF1B181F94002E82AA /* AppDelegate.h */,
 				AA669BB01B181F94002E82AA /* AppDelegate.m */,
 				AA669BB21B181F94002E82AA /* ViewController.h */,
@@ -254,6 +259,7 @@
 			files = (
 				AA669BB41B181F94002E82AA /* ViewController.m in Sources */,
 				AA669BB11B181F94002E82AA /* AppDelegate.m in Sources */,
+				AA93E60A1B1E772A00ADEA18 /* BNRImageStore.m in Sources */,
 				AA669BD61B1946F7002E82AA /* BNRItem.m in Sources */,
 				AA93E6011B1E39D700ADEA18 /* BNRDetailViewController.m in Sources */,
 				AA669BAE1B181F94002E82AA /* main.m in Sources */,

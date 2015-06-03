@@ -9,12 +9,15 @@
 #import "BNRDetailViewController.h"
 #import "BNRItem.h"
 #import "BNRChangeDateViewController.h"
+#import "BNRImageStore.h"
 
-@interface BNRDetailViewController ()
+@interface BNRDetailViewController () <UINavigationBarDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *nameField;
 @property (weak, nonatomic) IBOutlet UITextField *serialNumberField;
 @property (weak, nonatomic) IBOutlet UITextField *valueField;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UIToolbar *toolBar;
 
 @end
 
@@ -34,6 +37,12 @@
         dateFormatter.timeStyle = NSDateIntervalFormatterNoStyle;
     }
     self.dateLabel.text = [dateFormatter stringFromDate:item.dateCreated];
+    
+    UIImage *image = [[BNRImageStore sharedStore] imageForKey:item.itemKey];
+    self.imageView.image = image;
+}
+- (IBAction)backgroundTapped:(id)sender {
+    [self.view endEditing:YES];
 }
 
 -(void) viewWillDisappear:(BOOL)animated {
@@ -47,6 +56,11 @@
     item.valueInDollars = [self.valueField.text intValue];
 }
 
+-(BOOL) textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return YES;
+}
+
 - (IBAction)changeDate:(id)sender {
     BNRChangeDateViewController *cdvc = [[BNRChangeDateViewController alloc] init];
     cdvc.item = self.item;
@@ -56,6 +70,24 @@
 -(void) setItem:(BNRItem *)item {
     _item = item;
     [self.navigationItem setTitle:item.itemName];
+}
+
+- (IBAction)takePicture:(id)sender {
+    UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    } else {
+        imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    }
+    imagePicker.delegate = self;
+    [self presentViewController:imagePicker animated:YES completion:nil];
+}
+
+-(void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    UIImage *image = info[UIImagePickerControllerOriginalImage];
+    [[BNRImageStore sharedStore] setImage:image forKey:self.item.itemKey];
+    self.imageView.image = image;
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 // tap anywhere to dismiss number pad
