@@ -41,6 +41,7 @@
     UIImage *image = [[BNRImageStore sharedStore] imageForKey:item.itemKey];
     self.imageView.image = image;
 }
+
 - (IBAction)backgroundTapped:(id)sender {
     [self.view endEditing:YES];
 }
