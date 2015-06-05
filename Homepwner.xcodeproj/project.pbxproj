@@ -82,6 +82,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AA23651D1B2109D4001714F1 /* models */ = {
+			isa = PBXGroup;
+			children = (
+				AA669BD91B194844002E82AA /* BNRItemStore.h */,
+				AA669BDA1B194844002E82AA /* BNRItemStore.m */,
+				AA669BD41B1946F7002E82AA /* BNRItem.h */,
+				AA669BD51B1946F7002E82AA /* BNRItem.m */,
+				AA93E6081B1E772A00ADEA18 /* BNRImageStore.h */,
+				AA93E6091B1E772A00ADEA18 /* BNRImageStore.m */,
+			);
+			name = models;
+			sourceTree = "<group>";
+		};
+		AA23651E1B2109E7001714F1 /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				AA669BD11B194514002E82AA /* BNRItemsTableViewController.h */,
+				AA669BD21B194514002E82AA /* BNRItemsTableViewController.m */,
+				AA93E5FE1B1E39D700ADEA18 /* BNRDetailViewController.h */,
+				AA93E5FF1B1E39D700ADEA18 /* BNRDetailViewController.m */,
+				AA93E6031B1E5D8900ADEA18 /* BNRChangeDateViewController.h */,
+				AA93E6041B1E5D8900ADEA18 /* BNRChangeDateViewController.m */,
+			);
+			name = controllers;
+			sourceTree = "<group>";
+		};
+		AA23651F1B210F4F001714F1 /* XIB files */ = {
+			isa = PBXGroup;
+			children = (
+				AA669BBA1B181F94002E82AA /* LaunchScreen.xib */,
+				AA93E6001B1E39D700ADEA18 /* BNRDetailViewController.xib */,
+				AA93E6051B1E5D8900ADEA18 /* BNRChangeDateViewController.xib */,
+			);
+			name = "XIB files";
+			sourceTree = "<group>";
+		};
 		AA669B9F1B181F94002E82AA = {
 			isa = PBXGroup;
 			children = (
@@ -103,28 +139,16 @@
 		AA669BAA1B181F94002E82AA /* Homepwner */ = {
 			isa = PBXGroup;
 			children = (
-				AA669BD41B1946F7002E82AA /* BNRItem.h */,
-				AA669BD51B1946F7002E82AA /* BNRItem.m */,
-				AA93E6081B1E772A00ADEA18 /* BNRImageStore.h */,
-				AA93E6091B1E772A00ADEA18 /* BNRImageStore.m */,
+				AA23651F1B210F4F001714F1 /* XIB files */,
+				AA23651E1B2109E7001714F1 /* controllers */,
+				AA23651D1B2109D4001714F1 /* models */,
 				AA669BAF1B181F94002E82AA /* AppDelegate.h */,
 				AA669BB01B181F94002E82AA /* AppDelegate.m */,
 				AA669BB21B181F94002E82AA /* ViewController.h */,
 				AA669BB31B181F94002E82AA /* ViewController.m */,
 				AA669BB51B181F94002E82AA /* Main.storyboard */,
 				AA669BB81B181F94002E82AA /* Images.xcassets */,
-				AA669BBA1B181F94002E82AA /* LaunchScreen.xib */,
 				AA669BAB1B181F94002E82AA /* Supporting Files */,
-				AA669BD11B194514002E82AA /* BNRItemsTableViewController.h */,
-				AA669BD21B194514002E82AA /* BNRItemsTableViewController.m */,
-				AA669BD91B194844002E82AA /* BNRItemStore.h */,
-				AA669BDA1B194844002E82AA /* BNRItemStore.m */,
-				AA93E5FE1B1E39D700ADEA18 /* BNRDetailViewController.h */,
-				AA93E5FF1B1E39D700ADEA18 /* BNRDetailViewController.m */,
-				AA93E6001B1E39D700ADEA18 /* BNRDetailViewController.xib */,
-				AA93E6031B1E5D8900ADEA18 /* BNRChangeDateViewController.h */,
-				AA93E6041B1E5D8900ADEA18 /* BNRChangeDateViewController.m */,
-				AA93E6051B1E5D8900ADEA18 /* BNRChangeDateViewController.xib */,
 			);
 			path = Homepwner;
 			sourceTree = "<group>";
@@ -390,6 +414,7 @@
 				INFOPLIST_FILE = Homepwner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -400,6 +425,7 @@
 				INFOPLIST_FILE = Homepwner/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
