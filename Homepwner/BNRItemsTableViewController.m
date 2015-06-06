@@ -40,6 +40,16 @@
     [self.tableView reloadData];
 }
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"UITableViewCell"];
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
 - (void)addNewItem:(id)sender {
     BNRItem *newItem = [[BNRItemStore sharedStore] createItem];
 //    NSInteger lastRow = [[[BNRItemStore sharedStore] allItems] indexOfObject:newItem];
@@ -55,13 +65,15 @@
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:dvc];
     nav.modalPresentationStyle = UIModalPresentationPageSheet;
     nav.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    // present modally
     [self presentViewController:nav animated:YES completion:nil];
 }
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [[[BNRItemStore sharedStore] allItems] count];
 }
-    
+
+// When a UITableView is displaying, this method gets called per row. In it you will customize each cell with particular data for display. Gets called when [tableView insert/delete]
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell" forIndexPath:indexPath];
     NSArray *items = [[BNRItemStore sharedStore] allItems];
@@ -70,16 +82,7 @@
     return cell;
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"UITableViewCell"];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
+// it fires when you touch DELETE button
 - (void) tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete && indexPath.row != [[[BNRItemStore sharedStore] allItems] count] - 1) {
         NSArray *allItems = [[BNRItemStore sharedStore] allItems];
