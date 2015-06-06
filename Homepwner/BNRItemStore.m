@@ -31,10 +31,26 @@
 - (instancetype) initPrivate {
     self = [super init];
     if (self) {
-        _privateItems = [[NSMutableArray alloc] init];
+        NSString *path = [self itemArchivePath];
+        _privateItems = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
+        if (!_privateItems) {
+            _privateItems = [[NSMutableArray alloc] init];
+        }
         [self.privateItems addObject:@"No More Items!"];
     }
     return self;
+}
+
+
+- (NSString *)itemArchivePath {
+    NSArray *documentDirectories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentDirectory = [documentDirectories firstObject];
+    return [documentDirectory stringByAppendingPathComponent:@"items.archive"];
+}
+
+- (BOOL)saveChanges {
+    NSString *path = [self itemArchivePath];
+    return [NSKeyedArchiver archiveRootObject:self.privateItems toFile:path];
 }
 
 - (void) removeItem:(BNRItem *)item {
@@ -48,7 +64,8 @@
 }
 
 - (BNRItem *) createItem {
-    BNRItem *item = [BNRItem randomItem];
+//    BNRItem *item = [BNRItem randomItem];
+    BNRItem *item = [[BNRItem alloc] init];
     [self.privateItems insertObject:item atIndex:[self.privateItems count] - 1];
 //    [self.privateItems addObject:item];
     return item;
