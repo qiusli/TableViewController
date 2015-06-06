@@ -42,9 +42,20 @@
 
 - (void)addNewItem:(id)sender {
     BNRItem *newItem = [[BNRItemStore sharedStore] createItem];
-    NSInteger lastRow = [[[BNRItemStore sharedStore] allItems] indexOfObject:newItem];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:lastRow inSection:0];
-    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationTop];
+//    NSInteger lastRow = [[[BNRItemStore sharedStore] allItems] indexOfObject:newItem];
+//    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:lastRow inSection:0];
+//    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationTop];
+    BNRDetailViewController *dvc = [[BNRDetailViewController alloc] initWithNewItem:YES];
+    dvc.item = newItem;
+    
+    dvc.dismissBlock = ^{
+        [self.tableView reloadData];
+    };
+    
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:dvc];
+    nav.modalPresentationStyle = UIModalPresentationPageSheet;
+    nav.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    [self presentViewController:nav animated:YES completion:nil];
 }
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -89,7 +100,7 @@
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     BNRItem *selectedItem = [[[BNRItemStore sharedStore] allItems] objectAtIndex:indexPath.row];
-    BNRDetailViewController *detailedView = [[BNRDetailViewController alloc] init];
+    BNRDetailViewController *detailedView = [[BNRDetailViewController alloc] initWithNewItem:NO];
     detailedView.item = selectedItem;
     [self.navigationController pushViewController:detailedView animated:YES];
 }

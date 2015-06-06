@@ -29,9 +29,10 @@
 
 +(instancetype) sharedStore {
     static BNRImageStore *store = nil;
-    if (!store) {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
         store = [[self alloc] initPrivate];
-    }
+    });
     return store;
 }
 
